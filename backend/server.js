@@ -2,6 +2,7 @@ const http = require('http')
 const { Server } = require('socket.io')
 const app = require('./app');
 const cloudinary = require("cloudinary");
+const PORT = process.env.PORT || 4000;
 const connectDatabase = require("./config/database");
 
 // handling uncaught exception
@@ -101,8 +102,8 @@ io.on('connection', (socket)=>{
         }
     })
 })
-server.listen(process.env.PORT, () => {
-    console.log(`Server is running on http://localhost:${process.env.PORT}`);
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 })
 // const server = app.listen(process.env.PORT, ()=>{
 //     console.log(`Server is running on http://localhost:${process.env.PORT}`);
