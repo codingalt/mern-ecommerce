@@ -22,7 +22,11 @@ cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
-})
+});
+
+app.get("/", (req, res) => {
+  res.send("API is Running Successfully.");
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
