@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    html{
+        @apply text-neutral-600;
+    }
+}
+input:focus {
+    @apply focus:ring-0 focus:ring-transparent focus:ring-offset-transparent;
+}
+*{
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+}
+/* Products page pagination styles */
+.pagination-container{
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.page-item{
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s;
+}
+.page-item:hover{
+    background-color: #e7e6e6;
+}
+.page-item:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.page-item:last-child{
+    border-radius: 0 5px 5px 0;
+}
+.page-link{
+    color: black;
+}
+.page-item:hover .page-link{
+    color: #000000;
+}
+.pagination-container .active{
+    background-color: tomato;
+    color: white;
+}
+
+/* CheckoutSteps page styles */
+.Mui-active{
+    color: tomato;
+}
+.Mui-completed{
+    color: green;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Register page styles */
+#register-image > input {
+    padding: 0;
+}
+
+#register-image > input::-webkit-file-upload-button {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    height: 33px;
+    z-index: 2;
+    padding: 0 10px;
+    background-color: #DEE2E6;
+    transition: all 0.4s;
+}
+
+#register-image > input::-webkit-file-upload-button:hover {
+    background-color: #CED4DA;    
+}
+
+/* .Mui-focused .MuiOutlinedInput-root{
+    outline: none !important;
+    border: none !important;
+}
+.Mui-focused{
+    outline: none !important;
+    border: none !important;
+} */
+
+/* loader spinner */
+.custom-loader {
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:6px solid;
+    border-color:#E4E4ED;
+    border-right-color: #766DF4;
+    animation:s2 1s infinite linear;
+    margin-right: 10px;
+  }
+  @keyframes s2 {to{transform: rotate(1turn)}}
