@@ -54,7 +54,6 @@ const App = () => {
     setStripeApiKey(data.stripeApiKey)
   }
   const { loading, isAuthenticated, user, error } = useSelector((state) => state.user)
-  console.log("app.js of frontend")
   useEffect(() => {
     store.dispatch(loadUser());
     getStripeApiKey()
