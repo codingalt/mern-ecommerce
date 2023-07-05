@@ -2,7 +2,8 @@
 
 const sendToken = (user, statusCode, res)=>{
     const token = user.getJWTToken();
-    
+    console.log("send token called")
+    console.log("token: ", token)
     // options for cookie
     const options = {
         expires: new Date(
