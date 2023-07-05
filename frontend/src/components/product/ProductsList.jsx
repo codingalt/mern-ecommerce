@@ -8,6 +8,7 @@ import ProductCard from './ProductCard'
 import { NavLink } from 'react-router-dom'
 
 const ProductsList = () => {
+  console.log("products List section")
   const alert = useAlert()
   const { loading, products, error, productCount } = useSelector(state => state.product)
   const dispatch = useDispatch()
