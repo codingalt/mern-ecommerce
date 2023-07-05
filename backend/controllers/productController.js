@@ -84,7 +84,8 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next)=>{
         products,
         productCount,
         resultPerPage,
-        filteredProductsCount
+        filteredProductsCount,
+        check: "checking changes"
     });
 })
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next)=>{
