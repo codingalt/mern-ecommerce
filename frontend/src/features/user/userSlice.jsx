@@ -12,7 +12,11 @@ export const login = createAsyncThunk('user/login', async (data) => {
     console.log("login called")
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     try {
-        const response = await axios.post("/api/v1/login", data, config);
+        const response = await axios.post(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/login",
+          data,
+          config
+        );
         return response.data;
     } catch (error) {
         if (error.response) {
@@ -33,7 +37,11 @@ export const login = createAsyncThunk('user/login', async (data) => {
 export const register = createAsyncThunk('user/register', async (data) => {
     const config = { headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true };
     try {
-        const response = await axios.post("/api/v1/register", data, config)
+        const response = await axios.post(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/register",
+          data,
+          config
+        );
         return response.data
     } catch (error) {
         if (error.response) {
@@ -52,7 +60,9 @@ export const register = createAsyncThunk('user/register', async (data) => {
 // loadUser
 export const loadUser = createAsyncThunk('user/loadUser', async () => {
     try {
-        const response = await axios.get("/api/v1/me")
+        const response = await axios.get(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/me"
+        );
         return response.data
     } catch (error) {
         if (error.response) {
@@ -70,14 +80,16 @@ export const loadUser = createAsyncThunk('user/loadUser', async () => {
 })
 // logout
 export const logout = createAsyncThunk('user/logout', async () => {
-    const response = await axios.get("/api/v1/logout")
+    const response = await axios.get(
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/logout"
+    );
     return response.data
 })
 
 // get user details (Admin)
 // export const getUserDetails = createAsyncThunk('user/getUserDetails', async (id) => {
 //     try {
-//         const response = await axios.get(`/api/v1/admin/user/${id}`)
+//         const response = await axios.get(`https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/user/${id}`)
 //         return response.data
 //     } catch (error) {
 //         if (error.response) {

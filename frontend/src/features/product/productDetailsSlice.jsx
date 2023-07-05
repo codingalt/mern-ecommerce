@@ -9,7 +9,9 @@ const initialState = {
 }
 
 export const fetchProductDetails =  createAsyncThunk('product/fetchProductDetails', async (id)=>{
-    const response = await axios.get(`/api/v1/product/${id}`);
+    const response = await axios.get(
+      `https://mern-ecommerce-2wa7.onrender.com/api/v1/product/${id}`
+    );
     return response.data;
 })
 

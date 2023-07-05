@@ -11,7 +11,11 @@ const initialState = {
 export const updateProfile = createAsyncThunk('user/updateProfile', async (data)=>{
     const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
     try {
-        const response = await axios.put("/api/v1/me/update", data, config)
+        const response = await axios.put(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/me/update",
+          data,
+          config
+        );
         return response.data
     } catch (error) {
         if (error.response) {
@@ -31,7 +35,11 @@ export const updateProfile = createAsyncThunk('user/updateProfile', async (data)
 export const updatePassword = createAsyncThunk('user/updatePassword', async (passwords)=>{
     const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
     try {
-        const response = await axios.put("/api/v1/password/update", passwords, config)
+        const response = await axios.put(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/password/update",
+          passwords,
+          config
+        );
         return response.data
     } catch (error) {
         if (error.response) {

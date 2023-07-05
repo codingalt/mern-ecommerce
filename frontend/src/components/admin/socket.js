@@ -6,7 +6,7 @@ const useSocket = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const sk = io.connect("http://localhost:4000");
+    const sk = io.connect("https://mern-ecommerce-2wa7.onrender.com");
     setSocket(sk);
 
     return () => {

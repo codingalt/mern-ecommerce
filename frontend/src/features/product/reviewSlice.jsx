@@ -10,7 +10,11 @@ const initialState = {
 export const newReview = createAsyncThunk('product/newReview', async (reviewData)=>{
     const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
     try {
-        const response = await axios.put("/api/v1/review", reviewData, config)
+        const response = await axios.put(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/review",
+          reviewData,
+          config
+        );
         return response.data
     } catch (error) {
         if (error.response) {

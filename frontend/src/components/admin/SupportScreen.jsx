@@ -10,8 +10,9 @@ import { Box, useTheme } from '@mui/material'
 let allUsers = [];
 let allMessages = [];
 let allSelectedUser = {}
-const ENDPOINT = window.location.host.indexOf('localhost') >= 0
-    ? 'http://127.0.0.1:4000'
+const ENDPOINT =
+  window.location.host.indexOf("localhost") >= 0
+    ? "https://mern-ecommerce-2wa7.onrender.com"
     : window.location.host;
 
 const SupportScreen = () => {

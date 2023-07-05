@@ -9,7 +9,9 @@ const initialState = {
 
 export const getOrderDetails = createAsyncThunk('order/getOrderDetails', async (id) => {
     try {
-        const response = await axios.get(`/api/v1/order/${id}`);
+        const response = await axios.get(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/order/${id}`
+        );
         return response.data;
     } catch (error) {
         if (error.response) {

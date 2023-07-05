@@ -11,10 +11,10 @@ const initialState = {
 }
 
 export const fetchProducts = createAsyncThunk('product/fetchProducts', async ({ keyword='', currentPage=1, price=[0, 25000], category, ratings=0 , order=''} )=>{
-    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&order=${order}`;
+    let link = `https://mern-ecommerce-2wa7.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&order=${order}`;
     if(category){
         // link = `/api/v1/products?keyword=${keyword}&page=2&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&order=${order}`;
+        link = `https://mern-ecommerce-2wa7.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&order=${order}`;
     }
     // console.log("hello")
     const response = await axios.get(link);
@@ -24,7 +24,9 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async ({ 
 // get all products (Admin)
 export const getAdminProducts = createAsyncThunk('products/getAdminProducts', async ()=>{
     try {
-        const response = await axios.get("/api/v1/admin/products")
+        const response = await axios.get(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/products"
+        );
         return response.data
     } catch (error) {
         if (error.response) {

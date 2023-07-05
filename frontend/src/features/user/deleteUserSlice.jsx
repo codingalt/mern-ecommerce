@@ -10,7 +10,9 @@ const initialState = {
 // delete product (admin)
 export const deleteUser = createAsyncThunk('user/deleteUser', async (id) => {
     try {
-        const response = await axios.delete(`/api/v1/admin/user/${id}`)
+        const response = await axios.delete(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/user/${id}`
+        );
         return response.data
     } catch (error) {
         if (error.response) {

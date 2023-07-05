@@ -10,7 +10,9 @@ const initialState = {
 // get all categories
 export const getAllCategories = createAsyncThunk('products/getAllCategories', async () => {
     try {
-        const response = await axios.get("/api/v1/categories")
+        const response = await axios.get(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/categories"
+        );
         return response.data
     } catch (error) {
         if (error.response) {

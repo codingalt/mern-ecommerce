@@ -11,7 +11,11 @@ const initialState = {
 export const updateProduct = createAsyncThunk('user/updateProduct', async (data)=>{
     const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
     try {
-        const response = await axios.put(`/api/v1/admin/product/${data.id}`, data.myForm, config)
+        const response = await axios.put(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/product/${data.id}`,
+          data.myForm,
+          config
+        );
         return response.data
     } catch (error) {
         if (error.response) {

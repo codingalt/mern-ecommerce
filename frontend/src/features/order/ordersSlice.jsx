@@ -10,7 +10,9 @@ const initialState = {
 // myOrders
 export const myOrders = createAsyncThunk("order/myOrders", async () => {
   try {
-    const response = await axios.get("/api/v1/orders/me");
+    const response = await axios.get(
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/orders/me"
+    );
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -30,7 +32,9 @@ export const myOrders = createAsyncThunk("order/myOrders", async () => {
 // get all orders (Admin)
 export const getAdminOrders = createAsyncThunk('products/getAdminOrders', async () => {
   try {
-    const response = await axios.get("/api/v1/admin/orders")
+    const response = await axios.get(
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/orders"
+    );
     return response.data
   } catch (error) {
     if (error.response) {

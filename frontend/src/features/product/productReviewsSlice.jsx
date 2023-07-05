@@ -10,7 +10,9 @@ const initialState = {
 // get all Reviews (Admin)
 export const getAllReviews = createAsyncThunk('user/getAllReviews', async (productId) => {
     try {
-        const response = await axios.get(`/api/v1/reviews?id=${productId}`)
+        const response = await axios.get(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/reviews?id=${productId}`
+        );
         return response.data
     } catch (error) {
         if (error.response) {

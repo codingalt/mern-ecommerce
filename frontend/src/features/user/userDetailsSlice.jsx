@@ -10,7 +10,9 @@ const initialState = {
 // get user details (Admin)
 export const getUserDetails = createAsyncThunk('user/getUserDetails', async (id) => {
     try {
-        const response = await axios.get(`/api/v1/admin/user/${id}`)
+        const response = await axios.get(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/user/${id}`
+        );
         return response.data
     } catch (error) {
         if (error.response) {

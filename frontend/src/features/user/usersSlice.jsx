@@ -10,7 +10,9 @@ const initialState = {
 // get all orders (Admin)
 export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
     try {
-        const response = await axios.get("/api/v1/admin/users")
+        const response = await axios.get(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/users"
+        );
         return response.data
     } catch (error) {
         if (error.response) {

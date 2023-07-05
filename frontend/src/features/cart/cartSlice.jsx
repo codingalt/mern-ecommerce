@@ -7,7 +7,9 @@ const initialState = {
 }
 
 export const addItemsToCart = createAsyncThunk('cart/addItemsToCart', async (cartData) => {
-    const { data } = await axios.get(`/api/v1/product/${cartData.id}`);
+    const { data } = await axios.get(
+      `https://mern-ecommerce-2wa7.onrender.com/api/v1/product/${cartData.id}`
+    );
     const item = {
         product: data.product._id,
         name: data.product.name,

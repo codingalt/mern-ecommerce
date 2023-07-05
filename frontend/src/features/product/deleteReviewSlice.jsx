@@ -10,7 +10,9 @@ const initialState = {
 // delete product (admin)
 export const deleteReview = createAsyncThunk('user/deleteReview', async (data) => {
     try {
-        const response = await axios.delete(`/api/v1/reviews?id=${data.reviewId}&productId=${data.productId}`)
+        const response = await axios.delete(
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/reviews?id=${data.reviewId}&productId=${data.productId}`
+        );
         return response.data
     } catch (error) {
         if (error.response) {

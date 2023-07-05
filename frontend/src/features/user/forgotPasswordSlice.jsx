@@ -12,7 +12,11 @@ const initialState = {
 export const forgotPassword = createAsyncThunk('user/forgotPassword', async (email)=>{
     const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
     try {
-        const response = await axios.post("/api/v1/password/forgot", email, config);
+        const response = await axios.post(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/password/forgot",
+          email,
+          config
+        );
         return response.data;
     } catch (error) {
         if (error.response) {

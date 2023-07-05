@@ -48,7 +48,9 @@ const App = () => {
   const showHeaderAndFooter = !(pathname.startsWith('/admin'))
   const [stripeApiKey, setStripeApiKey] = useState("")
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get(
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/stripeapikey"
+    );
     setStripeApiKey(data.stripeApiKey)
   }
   const { loading, isAuthenticated, user, error } = useSelector((state) => state.user)

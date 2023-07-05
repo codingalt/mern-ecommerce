@@ -18,7 +18,9 @@ const initialState = {
 // get orders summary (admin)
 export const getOrdersSummary = createAsyncThunk('order/getOrdersSummary', async () => {
     try {
-        const response = await axios.get("/api/v1/admin/summary")
+        const response = await axios.get(
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/summary"
+        );
         return response.data
     } catch (error) {
         if (error.response) {
