@@ -34,12 +34,18 @@ const UserOptions = ({ user }) => {
     }
     function logoutUser() {
         dispatch(logout())
-        alert.success("Logout Successfully");
-        navigate("/")
+        // alert.success("Logout Successfully");
+        // navigate("/")
     }
     function dashboard() {
         navigate("/admin");
     }
+    useEffect(()=>{
+        if(!isAuthenticated){
+            alert.success("Logout Successfully");
+            navigate("/")
+        }
+    }, [isAuthenticated])
     return (
         <>
             {/* Profile dropdown */}

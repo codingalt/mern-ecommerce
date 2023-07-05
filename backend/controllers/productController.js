@@ -70,6 +70,7 @@ exports.getAllCategories = catchAsyncErrors(async (req, res, next)=>{
 })
 // get all products
 exports.getAllProducts = catchAsyncErrors(async (req, res, next)=>{
+    console.log("get all products api called (backend)")
     const resultPerPage = 8;
     const productCount = await Product.countDocuments();
     const apiFeature = new ApiFeatures(Product.find(), req.query).search().filter().sortProducts();
