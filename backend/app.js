@@ -13,9 +13,14 @@ if(process.env.NODE_ENV !== 'PRODUCTION'){
 
 const errorMiddleware = require("./middleware/error")
 
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
