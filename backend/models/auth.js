@@ -17,7 +17,7 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
         req.user = await User.findById(decodedData.id);
         next();
     } catch (error) {
-        return next(new ErrorHandler('Invalid token', 401));
+        return next(new ErrorHandler(`Invalid token: ${token}`, 401));
     }
 });
   

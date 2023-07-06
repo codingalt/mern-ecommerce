@@ -57,7 +57,7 @@ export const register = createAsyncThunk('user/register', async (data) => {
         }
     }
 })
-// loadUser
+// load User
 export const loadUser = createAsyncThunk('user/loadUser', async () => {
     try {
         const token = localStorage.getItem('token');
