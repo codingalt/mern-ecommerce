@@ -3,21 +3,37 @@ const ErrorHandler = require("../utils/errorHandler");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-exports.isAuthenticatedUser= catchAsyncErrors(async (req, res, next)=>{
-    // const {token} = req.cookies;
-    // Retrieve token from session storage
-    const token = window.sessionStorage.getItem('token');
+exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
+    const authorizationHeader = req.headers['authorization'];
 
-    console.log('Token---', token);
-    if(!token){
-        return next(new ErrorHandler("Please login to access this resourse", 401))
+    if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
+        return next(new ErrorHandler('Please login to access this resource', 401));
     }
 
-    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decodedData.id);
+    const token = authorizationHeader.split(' ')[1];
+
+    try {
+        const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = await User.findById(decodedData.id);
+        next();
+    } catch (error) {
+        return next(new ErrorHandler('Invalid token', 401));
+    }
+});
+  
+// exports.isAuthenticatedUser= catchAsyncErrors(async (req, res, next)=>{
+//     const {token} = req.cookies;
+
+//     console.log('Token---', token);
+//     if(!token){
+//         return next(new ErrorHandler("Please login to access this resourse", 401))
+//     }
+
+//     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+//     req.user = await User.findById(decodedData.id);
     
-    next();
-})
+//     next();
+// })
 
 exports.autherizeRoles = (...roles)=>{
     return (req, res, next)=>{

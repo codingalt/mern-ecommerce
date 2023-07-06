@@ -9,13 +9,13 @@ const initialState = {
 }
 // login
 export const login = createAsyncThunk('user/login', async (data) => {
-    console.log("login api called")
+    console.log("login api called new")
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     try {
         const response = await axios.post(
-          "https://mern-ecommerce-2wa7.onrender.com/api/v1/login",
-          data,
-          config
+            "https://mern-ecommerce-2wa7.onrender.com/api/v1/login",
+            data,
+            config
         );
         return response.data;
     } catch (error) {
@@ -38,9 +38,9 @@ export const register = createAsyncThunk('user/register', async (data) => {
     const config = { headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true };
     try {
         const response = await axios.post(
-          "https://mern-ecommerce-2wa7.onrender.com/api/v1/register",
-          data,
-          config
+            "https://mern-ecommerce-2wa7.onrender.com/api/v1/register",
+            data,
+            config
         );
         return response.data
     } catch (error) {
@@ -60,10 +60,18 @@ export const register = createAsyncThunk('user/register', async (data) => {
 // loadUser
 export const loadUser = createAsyncThunk('user/loadUser', async () => {
     try {
+        const token = localStorage.getItem('token');
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+            },
+            withCredentials: true
+        };
         const response = await axios.get(
-          "https://mern-ecommerce-2wa7.onrender.com/api/v1/me"
+            "https://mern-ecommerce-2wa7.onrender.com/api/v1/me",
+            config
         );
-        return response.data
+        return response.data;
     } catch (error) {
         if (error.response) {
             // The server responded with a status code outside the range of 2xx
@@ -81,7 +89,7 @@ export const loadUser = createAsyncThunk('user/loadUser', async () => {
 // logout
 export const logout = createAsyncThunk('user/logout', async () => {
     const response = await axios.get(
-      "https://mern-ecommerce-2wa7.onrender.com/api/v1/logout"
+        "https://mern-ecommerce-2wa7.onrender.com/api/v1/logout"
     );
     return response.data
 })
