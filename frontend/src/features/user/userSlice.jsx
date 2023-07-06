@@ -9,7 +9,6 @@ const initialState = {
 }
 // login
 export const login = createAsyncThunk('user/login', async (data) => {
-    console.log("login called")
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     try {
         const response = await axios.post(
