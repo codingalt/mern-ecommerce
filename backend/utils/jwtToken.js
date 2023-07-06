@@ -9,7 +9,7 @@ const sendToken = (user, statusCode, res)=>{
         ),
         httpOnly: true,
         sameSite: "none",
-        // secure: true,
+        secure: true,
         // domain: ".onrender.com"
     }
     res.status(statusCode).cookie("token", token, options).json({
