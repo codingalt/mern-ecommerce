@@ -58,6 +58,7 @@ const App = () => {
     store.dispatch(loadUser());
     getStripeApiKey()
   }, [])
+  console.log(stripeApiKey)
   return (
     <>
       {/* {showHeaderAndFooter && <Navbar />} */}
