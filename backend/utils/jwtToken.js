@@ -10,7 +10,7 @@ const sendToken = (user, statusCode, res)=>{
         httpOnly: true,
         sameSite: "none",
         secure: true,
-        // domain: ".onrender.com"
+        domain: "https://mern-ecommerce-2wa7.onrender.com"
     }
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
