@@ -8,9 +8,9 @@ const sendToken = (user, statusCode, res)=>{
             Date.now() + process.env.COOKIE_EXPIRE*24*60*60*1000
         ),
         httpOnly: true,
-        sameSite: "none",
-        secure: true,
-        domain: ".onrender.com"
+        // sameSite: "none",
+        // secure: true,
+        // domain: ".onrender.com"
     }
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
