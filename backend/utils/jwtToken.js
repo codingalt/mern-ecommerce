@@ -4,9 +4,7 @@ const sendToken = (user, statusCode, res) => {
     const token = user.getJWTToken();
     
     // Save token in session storage
-    if (typeof window !== 'undefined') {
-      window.sessionStorage.setItem('token', token);
-    }
+    localStorage.setItem("token", token);
   
     res.status(statusCode).json({
       success: true,
