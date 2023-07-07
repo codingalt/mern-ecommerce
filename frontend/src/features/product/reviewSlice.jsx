@@ -8,7 +8,14 @@ const initialState = {
 }
 
 export const newReview = createAsyncThunk('product/newReview', async (reviewData)=>{
-    const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
+    // const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.put(
           "https://mern-ecommerce-2wa7.onrender.com/api/v1/review",

@@ -23,9 +23,16 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async ({ 
 
 // get all products (Admin)
 export const getAdminProducts = createAsyncThunk('products/getAdminProducts', async ()=>{
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.get(
-          "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/products"
+          "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/products",
+          config
         );
         return response.data
     } catch (error) {

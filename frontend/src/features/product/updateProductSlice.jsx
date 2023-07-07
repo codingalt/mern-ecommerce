@@ -8,8 +8,15 @@ const initialState = {
 }
 
 // update profile
-export const updateProduct = createAsyncThunk('user/updateProduct', async (data)=>{
-    const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+export const updateProduct = createAsyncThunk('product/updateProduct', async (data)=>{
+    // const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.put(
           `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/product/${data.id}`,
@@ -33,7 +40,7 @@ export const updateProduct = createAsyncThunk('user/updateProduct', async (data)
 })
 
 const updateProductSlice = createSlice({
-    name: 'user',
+    name: 'product',
     initialState,
     reducers: {
         update_product_reset: (state)=>{

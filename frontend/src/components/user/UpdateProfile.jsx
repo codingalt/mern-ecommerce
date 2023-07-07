@@ -68,7 +68,7 @@ const Register = () => {
     return (
         <>
             {userLoading ? <Loader /> :
-                <div className='h-screen z-10 fixed top-0 left-0 w-full bg-white'>
+                <div className='h-screen z-30 fixed top-0 left-0 w-full bg-white'>
                     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 relative">
                         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                             <NavLink to='/'>

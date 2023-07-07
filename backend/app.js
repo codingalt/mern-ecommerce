@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors')
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const path = require('path')
+// const path = require('path')
 
 // config
 if(process.env.NODE_ENV !== 'PRODUCTION'){
@@ -19,7 +19,7 @@ const corsOptions = {
 };
 
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());

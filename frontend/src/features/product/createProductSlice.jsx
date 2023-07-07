@@ -10,7 +10,14 @@ const initialState = {
 
 // create new product (admin)
 export const createProduct = createAsyncThunk('product/createProduct', async (data)=>{
-    const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+    // const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.post(
           "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/product/new",

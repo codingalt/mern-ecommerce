@@ -9,9 +9,16 @@ const initialState = {
 
 // myOrders
 export const myOrders = createAsyncThunk("order/myOrders", async () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+    },
+  };
   try {
     const response = await axios.get(
-      "https://mern-ecommerce-2wa7.onrender.com/api/v1/orders/me"
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/orders/me",
+      config
     );
     return response.data;
   } catch (error) {
@@ -31,9 +38,16 @@ export const myOrders = createAsyncThunk("order/myOrders", async () => {
 
 // get all orders (Admin)
 export const getAdminOrders = createAsyncThunk('products/getAdminOrders', async () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+    },
+  };
   try {
     const response = await axios.get(
-      "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/orders"
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/orders",
+      config
     );
     return response.data
   } catch (error) {

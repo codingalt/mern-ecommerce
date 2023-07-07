@@ -38,7 +38,13 @@ const Payment = () => {
         e.preventDefault();
         payBtn.current.disabled = true;
         payBtn.current.opacity = 0.5;
-        const config = { headers: { 'Content-Type': 'application/json' } };
+        // const config = { headers: { 'Content-Type': 'application/json' } };
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+            },
+        };
         try {
             const { data } = await axios.post(
               "https://mern-ecommerce-2wa7.onrender.com/api/v1/payment/process",

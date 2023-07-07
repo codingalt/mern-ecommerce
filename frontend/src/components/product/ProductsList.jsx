@@ -12,11 +12,14 @@ const ProductsList = () => {
   const { loading, products, error, productCount } = useSelector(state => state.product)
   const dispatch = useDispatch()
   useEffect(() => {
+    dispatch(fetchProducts({ keyword: '' }))
+  }, [dispatch, productCount])
+  useEffect(() => {
     if (error) {
       alert.error(error)
       dispatch(clearErrors())
     }
-    dispatch(fetchProducts({ keyword: '' }))
+    // dispatch(fetchProducts({ keyword: '' }))
   }, [dispatch, error, productCount])
   return (
     <>

@@ -11,14 +11,9 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     }
 
     const token = authorizationHeader.split(' ')[1];
-
-    try {
-        const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = await User.findById(decodedData.id);
-        next();
-    } catch (error) {
-        return next(new ErrorHandler(`Invalid token: ${token}`, 401));
-    }
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decodedData.id);
+    next();
 });
   
 // exports.isAuthenticatedUser= catchAsyncErrors(async (req, res, next)=>{

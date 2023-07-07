@@ -48,8 +48,16 @@ const App = () => {
   const showHeaderAndFooter = !(pathname.startsWith('/admin'))
   const [stripeApiKey, setStripeApiKey] = useState("")
   async function getStripeApiKey() {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+      },
+      // withCredentials: true
+    };
     const { data } = await axios.get(
-      "https://mern-ecommerce-2wa7.onrender.com/api/v1/stripeapikey"
+      "https://mern-ecommerce-2wa7.onrender.com/api/v1/stripeapikey",
+      config
     );
     setStripeApiKey(data.stripeApiKey)
   }

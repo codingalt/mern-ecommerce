@@ -35,8 +35,8 @@ const ProcessOrder = () => {
             myForm,
         };
         dispatch(updateOrder(data))
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        actions.resetForm();
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
+        // actions.resetForm();
     }
     // useEffect(() => {
     //     dispatch(getOrderDetails(id))

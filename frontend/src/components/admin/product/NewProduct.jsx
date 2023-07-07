@@ -130,7 +130,8 @@ const NewProduct = () => {
     return (
         <>
             <MetaData title="Create Product" />
-            <Box m='20px'>
+            {/* <Box m='20px' border="4px solid red"> */}
+            <div className='border-4 m-2 sm:m-5'>
                 <AdminHeader title="create product" subtitle="create a new product" />
                 <Formik
                     onSubmit={handleFormSubmit}
@@ -147,8 +148,8 @@ const NewProduct = () => {
                         isSubmitting,
                     }) => (
                         <Form onSubmit={handleSubmit} encType='multipart/form-data'>
-                            <Grid container spacing={3}>
-                                <Grid item sm={12} md={6}>
+                            <Grid container spacing={3} >
+                                <Grid item md={6} width="100%">
                                     <TextField
                                         fullWidth
                                         variant='filled'
@@ -163,7 +164,7 @@ const NewProduct = () => {
                                         helperText={touched.name && errors.name}
                                     />
                                 </Grid>
-                                <Grid item sm={12} md={6}>
+                                <Grid item md={6} width="100%">
                                     <Autocomplete
                                         value={value}
                                         fullWidth
@@ -216,7 +217,7 @@ const NewProduct = () => {
                                     />
                                     <FormHelperText sx={{ color: '#D32F2F', ml: '10px' }}>{categoryErrorMessage && categoryErrorMessage}</FormHelperText>
                                 </Grid>
-                                <Grid item sm={12} md={4}>
+                                <Grid item sm={12} md={4} width="100%">
                                     <TextField
                                         fullWidth
                                         variant='filled'
@@ -230,7 +231,7 @@ const NewProduct = () => {
                                         helperText={touched.stock && errors.stock}
                                     />
                                 </Grid>
-                                <Grid item sm={12} md={4} >
+                                <Grid item sm={12} md={4} width="100%">
                                     <TextField
                                         fullWidth
                                         variant='filled'
@@ -244,7 +245,7 @@ const NewProduct = () => {
                                         helperText={touched.price && errors.price}
                                     />
                                 </Grid>
-                                <Grid item sm={12} md={4}>
+                                <Grid item sm={12} md={4} width="100%">
                                     <Autocomplete
                                         value={sizes}
                                         multiple
@@ -263,7 +264,7 @@ const NewProduct = () => {
                                     {/* <FormHelperText sx={{ color: '#D32F2F', ml: '10px' }}>{categoryErrorMessage && categoryErrorMessage}</FormHelperText> */}
                                 </Grid>
 
-                                <Grid item sm={12}>
+                                <Grid item sm={12} width="100%">
                                     <TextField
                                         fullWidth
                                         variant='filled'
@@ -279,7 +280,7 @@ const NewProduct = () => {
                                         helperText={touched.description && errors.description}
                                     />
                                 </Grid>
-                                <Grid item sm={12} lg={9} minHeight='88px'>
+                                <Grid item sm={12} lg={9} minHeight='88px' width="100%">
                                     <div style={{ border: `1px dashed ${colors.grey[600]}`, borderRadius: '8px' }} className='flex gap-2 overflow-x-auto p-2'>
                                         {imagesPreview.length > 0 ? (
                                             imagesPreview.map((image, ind) => (
@@ -317,7 +318,7 @@ const NewProduct = () => {
                                         <input type="file" name="images" accept='image/*' multiple onChange={imageChangeEvent} />
                                     </Box>
                                 </Grid>
-                                <Grid item sm={12} lg={9} minHeight='88px'>
+                                <Grid item sm={12} lg={9} minHeight='88px' width="100%">
                                     <div style={{ border: `1px dashed ${colors.grey[600]}`, borderRadius: '8px' }} className='flex gap-2 overflow-x-auto p-2'>
                                         {colorImagesPreview.length > 0 ? (
                                             colorImagesPreview.map((image, ind) => (
@@ -365,7 +366,8 @@ const NewProduct = () => {
                         </Form>
                     )}
                 </Formik>
-            </Box>
+            {/* </Box> */}
+            </div>
         </>
     )
 }

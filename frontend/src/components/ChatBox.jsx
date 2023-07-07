@@ -41,7 +41,7 @@ const ChatBox = ({ userInfo }) => {
 
     const supportHandler = () => {
         setIsOpen(true);
-        const sk = io.connect("http://localhost:4000");
+        const sk = io.connect(ENDPOINT);
         setSocket(sk);
     }
     const submitHandler = (e) => {

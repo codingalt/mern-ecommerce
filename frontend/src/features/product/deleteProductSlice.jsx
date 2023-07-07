@@ -9,9 +9,16 @@ const initialState = {
 
 // delete product (admin)
 export const deleteProduct = createAsyncThunk('product/deleteProduct', async (id)=>{
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.delete(
-          `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/product/${id}`
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/admin/product/${id}`,
+          config
         );
         return response.data
     } catch (error) {

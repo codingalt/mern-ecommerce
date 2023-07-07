@@ -8,9 +8,16 @@ const initialState = {
 }
 
 export const getOrderDetails = createAsyncThunk('order/getOrderDetails', async (id) => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.get(
-          `https://mern-ecommerce-2wa7.onrender.com/api/v1/order/${id}`
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/order/${id}`,
+          config
         );
         return response.data;
     } catch (error) {

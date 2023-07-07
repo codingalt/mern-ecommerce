@@ -9,9 +9,16 @@ const initialState = {
 
 // delete product (admin)
 export const deleteReview = createAsyncThunk('user/deleteReview', async (data) => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.delete(
-          `https://mern-ecommerce-2wa7.onrender.com/api/v1/reviews?id=${data.reviewId}&productId=${data.productId}`
+          `https://mern-ecommerce-2wa7.onrender.com/api/v1/reviews?id=${data.reviewId}&productId=${data.productId}`,
+            config
         );
         return response.data
     } catch (error) {

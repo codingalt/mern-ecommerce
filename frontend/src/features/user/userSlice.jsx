@@ -65,7 +65,6 @@ export const loadUser = createAsyncThunk('user/loadUser', async () => {
             headers: {
                 'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
             },
-            withCredentials: true
         };
         const response = await axios.get(
             "https://mern-ecommerce-2wa7.onrender.com/api/v1/me",
@@ -177,6 +176,7 @@ const userSlice = createSlice({
             state.loading = false
             state.isAuthenticated = false
             state.user = null
+            localStorage.removeItem('token');
         })
         builder.addCase(logout.rejected, (state, action) => {
             state.loading = false

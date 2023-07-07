@@ -9,7 +9,14 @@ const initialState = {
 
 // update profile
 export const updateProfile = createAsyncThunk('user/updateProfile', async (data)=>{
-    const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+    // const config = {headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true};
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.put(
           "https://mern-ecommerce-2wa7.onrender.com/api/v1/me/update",
@@ -33,7 +40,14 @@ export const updateProfile = createAsyncThunk('user/updateProfile', async (data)
 })
 
 export const updatePassword = createAsyncThunk('user/updatePassword', async (passwords)=>{
-    const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
+    // const config = {headers: {'Content-Type': 'application/json'}, withCredentials: true};
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+    };
     try {
         const response = await axios.put(
           "https://mern-ecommerce-2wa7.onrender.com/api/v1/password/update",
