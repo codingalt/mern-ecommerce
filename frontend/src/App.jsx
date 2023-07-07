@@ -42,6 +42,7 @@ import ChatBox from './components/ChatBox'
 import { useSelector } from 'react-redux'
 import SupportScreen from './components/admin/SupportScreen'
 import NotFound from './components/NotFound'
+import { remove_cart } from './features/cart/cartSlice'
 
 const App = () => {
   const { pathname } = useLocation();
@@ -66,7 +67,11 @@ const App = () => {
     store.dispatch(loadUser());
     getStripeApiKey()
   }, [])
-  console.log(stripeApiKey)
+  // useEffect(() => {
+  //   if(!isAuthenticated){
+  //     store.dispatch(remove_cart());
+  //   }
+  // }, [error, isAuthenticated])
   return (
     <>
       {/* {showHeaderAndFooter && <Navbar />} */}

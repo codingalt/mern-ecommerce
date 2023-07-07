@@ -178,7 +178,7 @@ const ProductDetails = () => {
 
                                                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                                                     <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
-                                                    <div className="grid grid-cols-4 gap-4 md:gap-6">
+                                                    <div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
                                                         {product.sizes.map((size) => (
                                                             <RadioGroup.Option
                                                                 key={size.size}
@@ -241,32 +241,36 @@ const ProductDetails = () => {
                     </div>
                     <section className='py-6 px-4 sm:px-6 lg:px-28'>
                         <div className='w-full md:w-[80%] lg:w-[60%]'>
-                            <h1 className='text-lg font-bold text-gray-600 px-1 border-b-2 border-gray-300 w-fit'>Reviews</h1>
-                            {product.reviews.map((review, ind) => {
-                                const { _id, name, rating, comment, reviewedAt } = review
-                                const options = {
-                                    value: rating,
-                                    readOnly: true,
-                                    precision: 0.5
-                                }
-                                return (
-                                    <div key={_id} className="relative mt-9 flex items-center gap-x-4 border-b last:border-b-0 border-gray-200 pb-4">
-                                        <img
-                                            src={user?.avatar?.url ? user.avatar.url : "./images/profile.png"}
-                                            alt="avatar"
-                                            className="h-12 w-12 flex-none rounded-full bg-gray-50 self-start"
-                                        />
-                                        <div className="text-sm leading-6">
-                                            <p className="font-semibold text-gray-900">
-                                                {name}
-                                            </p>
-                                            <p>{reviewedAt.slice(0, 10)}</p>
-                                            <Rating {...options} size='small' className='my-3' />
-                                            <p>{comment}</p>
+                            <h1 className='text-lg font-bold text-gray-500 px-1 border-b-2 border-gray-300 w-fit'>Reviews</h1>
+                            {product.reviews.length > 0 ? (
+                                product.reviews.map((review, ind) => {
+                                    const { _id, name, rating, comment, reviewedAt } = review;
+                                    const options = {
+                                        value: rating,
+                                        readOnly: true,
+                                        precision: 0.5
+                                    };
+                                    return (
+                                        <div key={_id} className="relative mt-9 flex items-center gap-x-4 border-b last:border-b-0 border-gray-200 pb-4">
+                                            <img
+                                                src={user?.avatar?.url ? user.avatar.url : "./images/profile.png"}
+                                                alt="avatar"
+                                                className="h-12 w-12 flex-none rounded-full bg-gray-50 self-start"
+                                            />
+                                            <div className="text-sm leading-6">
+                                                <p className="font-semibold text-gray-900">
+                                                    {name}
+                                                </p>
+                                                <p>{reviewedAt.slice(0, 10)}</p>
+                                                <Rating {...options} size='small' className='my-3' />
+                                                <p>{comment}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })}
+                                    );
+                                })
+                            ) : (
+                                <p className='text-gray-500 text-sm md:text-base mt-2'>Product has no reviews yet</p>
+                            )}
                         </div>
                     </section>
                     {relatedProducts.length > 0 && (

@@ -428,7 +428,7 @@ const Products = () => {
                                             : ''
                                         }
                                     </div>
-                                    <div className="mt-6 grid gap-x-4 sm:gap-x-6 gap-y-6 sm:gap-y-10 grid-cols-2 above-md:grid-cols-3 lg:grid-cols-3 xl:gap-x-8">
+                                    <div className="mt-6 grid gap-x-2 sm:gap-x-5 gap-y-5 sm:gap-y-10 grid-cols-2 above-md:grid-cols-3 lg:grid-cols-3 xl:gap-x-8">
                                         {
                                             products.length > 0 ? (
                                                 products.map((product) => {

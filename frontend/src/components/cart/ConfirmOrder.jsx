@@ -30,7 +30,7 @@ const ConfirmOrder = () => {
     return (
         <>
             <MetaData title="Confirm Order" />
-            <div className='pt-24 w-[90%] mx-auto'>
+            <div className='pt-24 w-[95%] md:w-[94%] lg:w-[90%] mx-auto'>
                 <CheckoutSteps activeStep={1} />
                 <div className="grid grid-cols-1 gap-20 lg:grid-cols-12 mt-10 pb-16">
                     <div className="col-span-1 lg:col-span-7">
@@ -53,10 +53,10 @@ const ConfirmOrder = () => {
                         </div>
                         <div className="mt-6">
                             <h3 className='text-center pb-1 border-b border-gray-300 inline-block font-semibold'>Cart Items</h3>
-                            <div className='pl-3 mt-3 flex flex-col pt-4'>
+                            <div className='pl-2 md:pl-3 mt-3 flex flex-col pt-4'>
                                 {cartItems.map((item) => {
                                     return <div className="flex justify-between items-center border-t border-gray-200 py-6 last:border-b  last:border-gray-200" key={item.product}>
-                                        <div className='flex gap-3 items-center'>
+                                        <div className='flex gap-3'>
                                             <div className="aspect-w-1 min-w-[96px] md:min-w-[112px] overflow-hidden rounded-sm h-28 md:h-32 cursor-pointer bg-gray-200">
                                                 <img
                                                     src={item.image}
@@ -65,13 +65,13 @@ const ConfirmOrder = () => {
                                                 />
                                             </div>
                                             <div>
-                                                <NavLink to={`/product/${item.product}`} className='text-lg font-semibold'>{item.name}</NavLink>
+                                                <NavLink to={`/product/${item.product}`} className='text-base md:text-lg font-semibold'>{item.name}</NavLink>
                                                 {item.size && <p>Size: {item.size}</p>}
+                                                <p className='mt-1'>
+                                                    <small>Rs.</small> {item.price} * {item.quantity} = {item.price * item.quantity}
+                                                </p>
                                             </div>
                                         </div>
-                                        <p>
-                                        <small>Rs.</small> {item.price} * {item.quantity} = {item.price * item.quantity}
-                                        </p>
                                     </div>
                                 })}
                             </div>

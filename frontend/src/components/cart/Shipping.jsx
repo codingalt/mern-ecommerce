@@ -32,7 +32,7 @@ const Shipping = () => {
     navigate('/order/confirm')
   };
   return (
-    <div className='pt-24 w-[90%] mx-auto'>
+    <div className='pt-24 w-[95%] md:w-[94%] lg:w-[90%] mx-auto'>
       <div className='md:w-[80%] mx-auto'>
         <CheckoutSteps activeStep={0} />
         <Formik

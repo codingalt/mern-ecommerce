@@ -30,7 +30,7 @@ const ProductsList = () => {
           <div className="w-[96%] md:w-[94%] lg:w-[90%] mx-auto">
             <h2 className="text-xl font-semibold sm:text-2xl md:text-3xl sm:font-bold tracking-tight text-gray-600">New Arrivals</h2>
 
-            <div className="mt-6 grid gap-4 sm:gap-x-6 gap-y-6 sm:gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-6 grid gap-x-2 sm:gap-x-5 gap-y-5 sm:gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
               {products.length > 0 ? (
                 products.map((product) => {
                   return <ProductCard key={product._id} product={product} />

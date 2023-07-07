@@ -9,7 +9,6 @@ const initialState = {
 }
 // login
 export const login = createAsyncThunk('user/login', async (data) => {
-    console.log("login api called new")
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     try {
         const response = await axios.post(
@@ -59,13 +58,14 @@ export const register = createAsyncThunk('user/register', async (data) => {
 })
 // load User
 export const loadUser = createAsyncThunk('user/loadUser', async () => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+        // withCredentials: true
+    };
     try {
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: {
-                'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
-            },
-        };
         const response = await axios.get(
             "https://mern-ecommerce-2wa7.onrender.com/api/v1/me",
             config
@@ -146,6 +146,7 @@ const userSlice = createSlice({
             state.loading = false
             state.isAuthenticated = true
             state.user = action.payload.user
+            localStorage.setItem("token", JSON.stringify(action.payload.token));
         })
         builder.addCase(register.rejected, (state, action) => {
             state.loading = false

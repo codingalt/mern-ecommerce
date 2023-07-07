@@ -30,7 +30,7 @@ const HeroSection = () => {
                 <div className='h-full mx-auto w-[90%] md:grid md:grid-cols-custom flex justify-center pt-16'>
                     <div className='text-center flex flex-col justify-center px-4'>
                         <h1 className='text-2xl uppercase md:text-4xl lg:text-5xl font-extrabold flex flex-col'>
-                            <span className='italic bg-clip-text text-transparent bg-gradient-to-tr from-pink-500 to-violet-500'>unlock your </span>
+                            <span className='italic bg-clip-text text-transparent bg-gradient-to-tr from-pink-500 to-violet-500 border-2 border-transparent'>unlock your </span>
                             <span className='italic text-5xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-tr from-pink-500 to-violet-500'>style</span> 
                         </h1>
                         <NavLink to="/products"

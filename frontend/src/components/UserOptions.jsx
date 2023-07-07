@@ -49,7 +49,7 @@ const UserOptions = ({ user }) => {
     return (
         <>
             {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-6">
+            <Menu as="div" className="relative">
                 <div>
                     <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>

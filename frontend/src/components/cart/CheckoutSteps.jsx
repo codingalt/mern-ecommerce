@@ -24,7 +24,7 @@ const CheckoutSteps = ({ activeStep }) => {
     ]
     return (
         <div className=''>
-            <div className="border border-gray-400 rounded-lg p-3 mb-5">
+            <div className="border border-gray-400 rounded-lg py-3 md:p-3 mb-5">
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((item, index) => (
                         <Step key={index} active={activeStep === index ? true : false} completed={activeStep > index ? true : false}>

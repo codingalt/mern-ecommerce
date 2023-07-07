@@ -8,11 +8,12 @@ import { clear_errors, myOrders } from "../../features/order/ordersSlice";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { NavLink, useParams } from "react-router-dom";
 import { getOrderDetails } from "../../features/order/orderDetailsSlice";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 
 const MyOrders = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery('(max-width: 600px)');
   // const params = useParams()
   const { loading, orders, error } = useSelector((state) => state.orders);
   const { user } = useSelector((state) => state.user);
@@ -20,13 +21,13 @@ const MyOrders = () => {
     {
       field: "id",
       headerName: "Order ID",
-      minWidth: 150,
+      minWidth: 130,
       flex: 1,
     },
     {
       field: "status",
       headerName: "Status",
-      minWidth: 150,
+      minWidth: 100,
       flex: 0.7,
       cellClassName: (params) => {
         return params.row.status === "Delivered" ? "text-green" : "text-blue";
@@ -36,21 +37,21 @@ const MyOrders = () => {
       field: "itemsQty",
       headerName: "Items Qty",
       type: "number",
-      minWidth: 150,
+      minWidth: 70,
       flex: 0.5,
     },
     {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 150,
+      minWidth: 80,
       flex: 1,
     },
     {
       field: "actions",
       headerName: "Actions",
       type: "number",
-      minWidth: 150,
+      minWidth: 70,
       flex: 0.5,
       sortable: false,
       renderCell: (params) => {
@@ -89,41 +90,43 @@ const MyOrders = () => {
         <Loader />
       ) : (
         orders.length > 0 ? (
-          <div className="pt-24 pb-10">
-            <Box
-              width='90%'
-              mx='auto'
-              sx={{
-                '.text-green': {
-                  color: 'green'
-                },
-                '.text-blue': {
-                  color: 'blue'
-                },
-                '>div': {
-                  fontSize: '16px'
-                },
-                '& .MuiDataGrid-columnHeaders': {
-                  borderBottom: 'none',
-                  backgroundColor: 'rgb(209 213 219)'
-                },
-                '& .MuiDataGrid-columnHeaderTitle': {
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  color: 'grey'
-                },
-              }}
-            >
-              <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSizeOptions={[10]}
-                disableRowSelectionOnClick
-                autoHeight
-                className="text-2xl"
-              />
-              <div className="bg-gray-300 text-center text-base py-1.5 font-semibold">{`${user.name}'s Orders`}</div>
-            </Box>
+          <div className="pt-24 pb-10 border-2 border-red-500">
+            <div className="w-[95%] md:w-[94%] lg:w-[90%] mx-auto">
+              <Box
+                // width='90%'
+                mx='auto'
+                sx={{
+                  '.text-green': {
+                    color: 'green'
+                  },
+                  '.text-blue': {
+                    color: 'blue'
+                  },
+                  '>div': {
+                    fontSize: isMobile ? '14px' : '16px',
+                  },
+                  '& .MuiDataGrid-columnHeaders': {
+                    borderBottom: 'none',
+                    backgroundColor: 'rgb(209 213 219)'
+                  },
+                  '& .MuiDataGrid-columnHeaderTitle': {
+                    fontSize: isMobile ? '14px' : '16px',
+                    fontWeight: '600',
+                    color: 'grey'
+                  },
+                }}
+              >
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSizeOptions={[10]}
+                  disableRowSelectionOnClick
+                  autoHeight
+                  className="text-2xl"
+                />
+                <div className="bg-gray-300 text-center text-base py-1.5 font-semibold">{`${user.name}'s Orders`}</div>
+              </Box>
+            </div>
           </div>
         )
           :

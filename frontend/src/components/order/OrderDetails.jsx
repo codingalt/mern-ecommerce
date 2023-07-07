@@ -68,7 +68,7 @@ const OrderDetails = () => {
                 <Loader />
             ) : (
                 <div className="pt-28">
-                    <div className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-10 pb-12">
+                    <div className="w-[95%] md:w-[94%] lg:w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-10 pb-12">
                         {order && Object.keys(order).length > 0 ? (
                             <>
                                 <div className="col-span-full lg:col-span-1">
@@ -118,12 +118,12 @@ const OrderDetails = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="col-span-full lg:col-span-1 bg-gray-50 rounded-md shadow-sm p-10 h-fit">
+                                <div className="col-span-full lg:col-span-1 bg-gray-50 rounded-md shadow-sm py-10 px-2 md:p-10 h-fit">
                                     <h3 className='text-center pb-1 border-b border-gray-300 inline-block font-semibold'>Order Items</h3>
                                     <div className='mt-3 flex flex-col pt-4'>
                                         {order && order.orderItems.map((item) => {
-                                            return <div className="flex justify-between items-center border-t border-gray-200 py-6 last:border-b  last:border-gray-200 bg-white px-4 rounded-lg" key={item.product}>
-                                                <div className='flex gap-3 items-center'>
+                                            return <div className="relative flex justify-between gap-3 items-center border-t border-gray-200 py-6 last:border-b  last:border-gray-200 bg-white px-2 md:px-3 rounded-lg" key={item.product}>
+                                                <div className='flex gap-2 md:gap-3'>
                                                     <div className="aspect-w-1 min-w-[96px] md:min-w-[112px] overflow-hidden rounded-sm h-28 md:h-32 cursor-pointer bg-gray-100">
                                                         <img
                                                             src={item.color || item.image}
@@ -132,18 +132,17 @@ const OrderDetails = () => {
                                                         />
                                                     </div>
                                                     <div>
-                                                        <NavLink to={`/product/${item.product}`} className='text-lg font-semibold'>{item.name}</NavLink>
-                                                        {item.size && <p>Size: {item.size}</p>}
+                                                        <NavLink to={`/product/${item.product}`} className='text-sm md:text-lg font-semibold'>{item.name}</NavLink>
+                                                        {item.size && <p className="text-sm md:text-base">Size: {item.size}</p>}
+                                                        <p className="text-sm md:text-base mt-1">
+                                                            {item.price} * {item.quantity} = {item.price * item.quantity}
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col items-center">
-                                                    <p>
-                                                        {item.price} * {item.quantity} = {item.price * item.quantity}
-                                                    </p>
-                                                    {order && order.orderStatus === 'Delivered' &&
-                                                        <button className='bg-gradient-to-tr from-pink-500 to-violet-500 text-white text-sm px-3 py-2 rounded-md font-semibold mt-1' onClick={() => handleClickOpen(item.product)}>Submit Review</button>
-                                                    }
-                                                </div>
+                                                {
+                                                    order && order.orderStatus === 'Delivered' &&
+                                                    <button className='absolute right-3 bottom-3 bg-gradient-to-tr from-pink-500 to-violet-500 text-white text-xs sm:text-sm px-2 py-2 rounded-md font-semibold mt-1 ' onClick={() => handleClickOpen(item.product)}>Submit Review</button>
+                                                }
                                             </div>
                                         })}
                                     </div>

@@ -73,13 +73,13 @@ const Cart = () => {
                                             </div>
                                             <div className='flex flex-col justify-between pl-3'>
                                                 <div>
-                                                    <NavLink to={`/product/${item.product}`} className='text-lg font-semibold hover:underline'>{item.name}</NavLink>
+                                                    <NavLink to={`/product/${item.product}`} className='text-base md:text-lg font-semibold hover:underline'>{item.name}</NavLink>
                                                     {/* <h3 className='text-lg font-semibold'>{item.name}</h3> */}
                                                     {item.size && <p>Size: {item.size}</p>}
                                                 </div>
                                                 <h4 className='text-base font-semibold'>
-                                                    <span><small>Rs.</small> {item.price}.00 * {item.quantity} = </span>
-                                                    <span className=' text-orange-500'>{item.price * item.quantity}.00</span>
+                                                    <span><small>Rs.</small> {item.price} * {item.quantity} = </span>
+                                                    <span className=' text-orange-500'>{item.price * item.quantity}</span>
                                                 </h4>
                                             </div>
                                         </div>

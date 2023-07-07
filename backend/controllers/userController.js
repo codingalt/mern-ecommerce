@@ -92,7 +92,8 @@ exports.forgtoPassword = catchAsyncErrors(async (req, res, next) => {
         await user.save({ validateBeforeSave: false });
 
         // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/reset/${resetToken}`;
-        const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
+        // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
+        const resetPasswordUrl = `https://mern-ecommerce-frontend-29rv.onrender.com/password/reset/${resetToken}`;
         const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\n if you have not requested this email then please ignore it`;
 
         try {

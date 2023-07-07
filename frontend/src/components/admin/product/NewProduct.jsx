@@ -131,12 +131,12 @@ const NewProduct = () => {
         <>
             <MetaData title="Create Product" />
             {/* <Box m='20px' border="4px solid red"> */}
-            <div className='border-4 m-2 sm:m-5'>
+            <div className='m-2 sm:m-5'>
                 <AdminHeader title="create product" subtitle="create a new product" />
                 <Formik
                     onSubmit={handleFormSubmit}
                     initialValues={initialValues}
-                    validationSchema={productSchema}
+                    validationSchema={productSchema}    
                 >
                     {({
                         values,

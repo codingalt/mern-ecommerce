@@ -86,7 +86,7 @@ const Navbar = () => {
                 </Dialog>
 
                 <header className="absolute w-full z-20 bg-transparent">
-                    <nav aria-label="Top" className="mx-auto w-[96%] md:w-[90%] px-2">
+                    <nav aria-label="Top" className="mx-auto w-[96%] md:w-[94%] lg:w-[90%] pr-1.5 md:px-2">
                         <div className="flex h-16 items-center">
                             <button
                                 type="button"
@@ -98,7 +98,7 @@ const Navbar = () => {
                             </button>
 
                             {/* Logo */}
-                            <div className="ml-4 flex-none lg:ml-0">
+                            <div className="ml-2 md:ml-4 flex-none lg:ml-0">
                                 <NavLink to='/' className='flex items-center gap-1'>
                                     <span className="sr-only">Your Company</span>
                                     <img
@@ -161,12 +161,12 @@ const Navbar = () => {
                                             className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                                             aria-hidden="true"
                                         />
-                                        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cartItems.length}</span>
+                                        <span className="ml-1 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cartItems.length}</span>
                                         <span className="sr-only">items in cart, view bag</span>
                                     </NavLink>
                                 </div>
                                 {isAuthenticated &&
-                                    <div>
+                                    <div className='ml-2 md:ml-10'>
                                         <UserOptions user={user} />
                                     </div>
                                 }
