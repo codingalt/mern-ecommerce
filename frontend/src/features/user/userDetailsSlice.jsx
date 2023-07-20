@@ -14,6 +14,7 @@ export const getUserDetails = createAsyncThunk('user/getUserDetails', async (id)
       headers: {
         'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
       },
+        withCredentials: true
     };
     try {
         const response = await axios.get(
