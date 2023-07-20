@@ -63,7 +63,7 @@ export const loadUser = createAsyncThunk('user/loadUser', async () => {
         headers: {
             'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
         },
-        // withCredentials: true
+        withCredentials: true
     };
     try {
         const response = await axios.get(
